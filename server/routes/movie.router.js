@@ -1,4 +1,5 @@
 const express = require('express');
+const { join } = require('redux-saga/effects');
 const router = express.Router();
 const pool = require('../modules/pool')
 
@@ -11,6 +12,27 @@ router.get('/', (req, res) => {
     })
     .catch(err => {
       console.log('ERROR: Get all movies', err);
+      res.sendStatus(500)
+    })
+
+});
+
+router.get('/:movieId', (req, res) => {
+
+  // This SQL query basically just grabs all the information we'll need for
+  // the details pages using a many-to-many join and array agg.
+
+  const query = `SELECT title, description, poster, movies.id, array_agg(name) AS genre FROM movies
+  JOIN movies_genres ON movies_genres.movie_id = movies.id
+  JOIN genres ON movies_genres.genre_id = genres.id
+  WHERE movies.id = $1
+  GROUP BY title, description, poster, movies.id`;
+  pool.query(query, [req.params.movieId])
+  .then( result => {
+      res.send(result.rows);
+    })
+    .catch(err => {
+      console.log('ERROR: Get specific movie', err);
       res.sendStatus(500)
     })
 

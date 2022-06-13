@@ -14,6 +14,18 @@ import axios from 'axios';
 // Create the rootSaga generator function
 function* rootSaga() {
     yield takeEvery('FETCH_MOVIES', fetchAllMovies);
+    yield takeEvery('DETAIL_MOVIE', fetchMovieDetail);
+}
+// Using the payload recieved from the dispatch located in MovieList.jsx,
+// we get the information from api/movie/:movieId and send it to
+// the genres reducer.
+function* fetchMovieDetail(action) {
+    try {
+        const movies = yield axios.get(`/api/movie/${action.payload}`);
+        yield put({ type: 'SET_GENRES', payload: movies.data })
+    } catch {
+        console.error('SAGA error fetching details')
+    }
 }
 
 function* fetchAllMovies() {
@@ -26,7 +38,7 @@ function* fetchAllMovies() {
     } catch {
         console.log('get all error');
     }
-        
+
 }
 
 // Create sagaMiddleware
@@ -43,6 +55,9 @@ const movies = (state = [], action) => {
 }
 
 // Used to store the movie genres
+// This is where we store the value we click. It is only capable of holding one
+// movie at a time. This is intentional so we don't have to dig into an array to find
+// the movie we need.
 const genres = (state = [], action) => {
     switch (action.type) {
         case 'SET_GENRES':
@@ -68,7 +83,7 @@ sagaMiddleware.run(rootSaga);
 ReactDOM.render(
     <React.StrictMode>
         <Provider store={storeInstance}>
-        <App />
+            <App />
         </Provider>
     </React.StrictMode>,
     document.getElementById('root')

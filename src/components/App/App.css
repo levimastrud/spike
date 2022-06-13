@@ -1,24 +1,92 @@
-.App {
+/* Color pallette */
+
+:root {
+  --slate: #292929;
+  --shout: #fb3f3f;
+  --cream: #feedd5;
+}
+
+/* Fonts from dafont.com */
+
+@font-face {
+  font-family: modernia;
+  src: url(Modernia-Regular.otf);
+}
+
+@font-face {
+  font-family: bebas;
+  src: url(BebasNeue-Regular.ttf);
+}
+
+body {
   text-align: center;
-}
-
-
-.App-header {
-  background-color: #222;
-  height: 150px;
-  padding: 20px;
+  font-family: bebas;
+  letter-spacing: 1px;
+  background-color: var(--slate);
   color: white;
+  scroll-behavior: smooth;
+  overflow: auto;
 }
 
-.App-title {
-  font-size: 1.5em;
+/* Movi is the graphic above the movie list */
+
+.movi {
+  background: var(--shout);
+  background: radial-gradient(circle, rgba(251, 63, 63, 1) 0%, var(--slate) 40%);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  position: sticky;
+  top: 0;
+  z-index: -1;
 }
 
-.App-intro {
-  font-size: large;
+.movi h1 {
+  font-size: 15vw;
+  font-family: modernia;
+  color: var(--shout);
+  text-shadow: #FFF 0px 0px 5px, #FFF 0px 0px 10px, #FFF 0px 0px 15px, var(--shout) 0px 0px 20px, var(--shout) 0px 0px 30px, rgb(113, 122, 170) 0px 0px 40px, rgb(135, 229, 166) 0px 0px 50px, #372172 0px 0px 75px;
+  color: #FFFFFF;
 }
 
-@keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+.movi h4 {
+  margin-top: -5em;
+  margin-bottom: 5em;
+  color: rgba(255, 255, 255, 0.146);
+  text-shadow: var(white) 0px 0px 5px, var(--slate) 0px 0px 10px, var(--slate) 0px 0px 20px;
+  opacity: 50%;
+  font-size: 2vw;
+}
+
+.collectionHeader {
+  background-color: var(--slate);
+}
+
+.movies {
+  background: var(--slate);
+  background: linear-gradient(180deg, #29292900 0%, var(--slate) 17%, rgb(6, 6, 6) 65%);
+}
+
+img {
+  cursor: pointer;
+  transition: filter .1s;
+}
+
+/* Dims image to nearly black */
+
+img:active{
+  filter: brightness(20%);
+}
+
+.bottom {
+  background-color: rgb(6, 6, 6);
+  height: 20vh;
+}
+
+.bottom h6 {
+  margin: 0;
+  color: rgba(255, 255, 255, 0.381);
 }

@@ -1,0 +1,117 @@
+body {
+    background: linear-gradient(180deg, var(--slate) 40%, rgb(6, 6, 6) 95%);
+}
+
+.wrapper {
+    overflow: hidden;
+    position: relative;
+    height: 100vh;
+}
+
+
+/* This is pretty much my first time using grid, it turned out ok I think but doesn't scale well.
+... Hopefully Material UI can fix this problem! */
+
+.details {
+    margin-top: 2em;
+    margin-left: 6em;
+    display: grid;
+    grid-template-columns: 35vw 40vw;
+    grid-template-rows: 15vh 10vh 60vh;
+    color: white;
+}
+
+.titlebg {
+    text-shadow: var(--shout) 0px 0px 5px, var(--shout) 0px 0px 10px, var(--shout) 0px 0px 15px, var(--shout) 0px 0px 20px, var(--shout) 0px 0px 30px;
+    color: var(--shout);
+    opacity: 30%;
+    text-align: right;
+    font-size: 20em;
+    top: -.3em;
+    left: 1em;
+    bottom: 2em;
+    line-height: .8em;
+    z-index: -1;
+    position: absolute;
+}
+
+.image {
+    grid-column: 1;
+    grid-row: 3;
+    margin-top: 1em
+}
+
+.title {
+    text-shadow: var(--slate) 0px 0px 5px, var(--slate) 0px 0px 10px, var(--slate) 0px 0px 20px;
+    grid-column: 1;
+    grid-row: 1;
+    text-align: left;
+    font-size: 4em;
+    z-index: 3;
+}
+
+.genre {
+    text-shadow: var(--slate) 0px 0px 5px, var(--slate) 0px 0px 10px, var(--slate) 0px 0px 20px;
+    text-align: left;
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.description {
+    background-color: rgba(22, 22, 22, 0.506);
+    text-align: left;
+    font-size: 1.7em;
+    grid-column: 2;
+    grid-row: 3;
+    overflow: scroll;
+    padding: .5em .5em 0 .5em;
+    scrollbar-width: 5em;
+}
+
+/* Styles the scroll bar for the description */
+
+.description::-webkit-scrollbar {
+    width: .5em;
+    background-color: transparent;
+}
+
+.description::-webkit-scrollbar-thumb {
+    background-color: var(--shout);
+}
+
+.description::-webkit-scrollbar-corner {
+    background-color: transparent;
+  }
+
+.button {
+    height: 5vh;
+    grid-column: 2;
+    grid-row: 4;
+}
+
+
+img {
+    width: 20em;
+}
+
+/* Fancy button, I stole this trick from the internet.
+When you hover over it, it basically just moves the background,
+Which happens to be a gradient (without the gradient); */
+
+button {
+    color: var(--slate);
+    font-family: bebas;
+    font-size: 2em;
+    width: 4em;
+    border: 2px solid var(--slate);
+    transition: background-color 1s;
+    transition: color 1s;
+    background: linear-gradient(to left, white 50%, rgba(22, 22, 22, 0.906) 50%) right;
+    background-size: 200%;
+    transition: .3s ease-in-out;
+}
+
+button:hover {
+    color: white;
+    background-position: left;
+}
