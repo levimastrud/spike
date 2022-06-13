@@ -16,7 +16,7 @@ body {
     margin-top: 2em;
     margin-left: 6em;
     display: grid;
-    grid-template-columns: 35vw 40vw;
+    grid-template-columns: 45vw 40vw;
     grid-template-rows: 15vh 10vh 60vh;
     color: white;
 }
