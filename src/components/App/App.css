@@ -1,0 +1,97 @@
+/* Color pallette */
+
+:root {
+  --slate: #292929;
+  --shout: #fb3f3f;
+  --cream: #feedd5;
+  --code: #02c3ff;
+}
+
+/* Fonts from dafont.com */
+
+@font-face {
+  font-family: modernia;
+  src: url(Modernia-Regular.otf);
+}
+
+@font-face {
+  font-family: bebas;
+  src: url(BebasNeue-Regular.ttf);
+}
+
+#problem {
+  color:rgb(157, 157, 157);
+}
+
+textarea {
+  height: 15em;
+  width: 40em;
+  background-color: #292929;
+  resize: none;
+}
+
+body {
+  text-align: center;
+  letter-spacing: 1px;
+  font-family: bebas;
+  background-color: white;
+  color: #292929;
+  margin-top: 10em;
+
+}
+
+.home {
+  margin-top: 2em;
+  height: 3em;
+}
+
+button{
+  color: white;
+  font-family: bebas;
+  border: none;
+  margin: 1em;
+  font-size: 2em;
+  background-color: var(--code);
+  letter-spacing: .3px;
+  padding: 0 10px 0 10px;
+}
+
+button:hover {
+  color:#292929;
+}
+
+button:hover, img:hover {
+  cursor: pointer;
+}
+
+.hide-hint {
+  display:none;
+}
+
+.red button {
+  background-color: var(--shout);
+}
+
+.red textarea {
+  color: var(--shout);
+}
+
+.broken {
+  background-color: #fb3f3f;
+}
+
+.red h1 {
+  color: var(--shout);
+}
+
+.blue button{
+  background-color: var(--code);
+}
+
+.blue textarea {
+  color: var(--code);
+}
+
+.blue h1 {
+  color: #02c3ff;
+}
